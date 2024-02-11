@@ -33,7 +33,7 @@
 	</div>
 	
 	<script>
-		function validate(t){
+        function validate(t){
             if(isNaN(t)){
                     msg = "Please verify whether the temperature value is correct!!!";
                     alert(msg);
@@ -47,7 +47,7 @@
                else return true;
         }
 
-		function tempCal(t,u){
+        function tempCal(t,u){
             var t1;
             var u1;
 
@@ -64,16 +64,22 @@
                     u1 = "Réaumur";
                     return [t1,u1];
                }
+
         }
 
-	    $(document).ready(function(){
-			$("button").click(function(){
-			   var t = $('#temp').val();//celsius
-			   var u = $('#unit').val();
-			   
-			   alert("Temperature is "+t1+" in "+u1);
-			});
-		});
-	</script>
+        $(document).ready(function(){
+            $("button").click(function(){
+               var t = $('#temp').val();//celsius
+               var u = $('#unit').val();
+                var [t1,u1] = tempCal(t,u);
+
+               if (validate(t)){
+                let result =document.getElementById("result");
+                result.innerText = "Temperature is "+t1+" in "+u1;
+               }
+
+            });
+        });
+    </script>
 </body>
 </html>
